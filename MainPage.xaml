@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WidgetDemoApp.MainPage"
+    Title="Widget Demo App"
+    BackgroundColor="#F3F4F6">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="18">
+
+            <!-- Profile Image -->
+            <Image
+                Source="profile.png"
+                HeightRequest="120"
+                WidthRequest="120"
+                Aspect="AspectFill"
+                HorizontalOptions="Center"/>
+
+            <!-- Profile Card -->
+            <Frame
+                CornerRadius="15"
+                Padding="20"
+                BackgroundColor="White"
+                HasShadow="True">
+
+                <Grid
+                    RowDefinitions="Auto,Auto"
+                    ColumnDefinitions="*">
+
+                    <Label
+                        Text="Afreen Kazi"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor= "Black"
+                        HorizontalOptions="Center"/>
+
+                    <Label
+                        Grid.Row="1"
+                        Text="Computer Engineering"
+                        FontSize="16"
+                        TextColor="Gray"
+                        HorizontalOptions="Center"/>
+                </Grid>
+
+            </Frame>
+
+            <!-- Buttons -->
+            <StackLayout
+                Orientation="Horizontal"
+                Spacing="12"
+                HorizontalOptions="Center">
+
+                <Button
+                    x:Name="LikeButton"
+                    Text="Like (0)"
+                    Clicked="OnLikeClicked"
+                    BackgroundColor="#2563EB"
+                    TextColor="White"/>
+
+                <Button
+                    Text="Message"
+                    Clicked="OnMessageClicked"
+                    BackgroundColor="#16A34A"
+                    TextColor="White"/>
+
+            </StackLayout>
+
+            <!-- Comment Entry -->
+            <Entry
+                x:Name="CommentEntry"
+                Placeholder="Add a comment"
+                TextColor="Black"
+                BackgroundColor="White"/>
+
+            <Button
+                Text="Post Comment"
+                Clicked="OnPostCommentClicked"/>
+
+            <!-- Switch -->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+
+                <Label
+                    Text="Available for collaboration"
+                    TextColor="Gray"
+                    VerticalOptions="Center"/>
+
+                <Switch
+                    x:Name="AvailabilitySwitch"
+                    IsToggled="True"
+                    Toggled="OnAvailabilityToggled"/>
+
+            </StackLayout>
+
+            <Label
+                x:Name="AvailabilityLabel"
+                Text="Status: Available"
+                TextColor="Green"/>
+
+            <!-- Skills Collection -->
+            <Label
+                Text="My Skills"
+                FontSize="20"
+                TextColor="Black"
+                FontAttributes="Bold"/>
+
+            <CollectionView
+                x:Name="SkillsCollection"
+                HeightRequest="75"
+                ItemsLayout="HorizontalList"
+                SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Frame
+                            BackgroundColor="#DBEAFE"
+                            CornerRadius="10"
+                            Padding="12"
+                            Margin="4"
+                            HasShadow="False">
+
+                            <Label
+                                Text="{Binding .}"
+                                TextColor="#1E40AF"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center"/>
+
+                        </Frame>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
