@@ -1,137 +1,256 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="WidgetDemoApp.MainPage"
-    Title="Widget Demo App"
-    BackgroundColor="#F3F4F6">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WidgetDemoApp.MainPage"
+             Title="Dashboard"
+             BackgroundColor="#F4F6FA">
 
     <ScrollView>
-        <StackLayout Padding="20" Spacing="18">
+        <StackLayout Padding="20"
+                     Spacing="22">
 
-            <!-- Profile Image -->
-            <Image
-                Source="profile.png"
-                HeightRequest="120"
-                WidthRequest="120"
-                Aspect="AspectFill"
-                HorizontalOptions="Center"/>
+            <!-- HEADER -->
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Fill"
+                         VerticalOptions="Center">
 
-            <!-- Profile Card -->
-            <Frame
-                CornerRadius="15"
-                Padding="20"
-                BackgroundColor="White"
-                HasShadow="True">
+                <Label Text="My Dashboard"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="#202B45"
+                       VerticalOptions="Center"
+                       HorizontalOptions="StartAndExpand"/>
 
-                <Grid
-                    RowDefinitions="Auto,Auto"
-                    ColumnDefinitions="*">
+                <!-- ABSOLUTE LAYOUT: NOTIFICATION ICON + BADGE -->
+                <AbsoluteLayout WidthRequest="45"
+                                HeightRequest="45">
 
-                    <Label
-                        Text="Afreen Kazi"
-                        FontSize="24"
-                        FontAttributes="Bold"
-                        TextColor= "Black"
-                        HorizontalOptions="Center"/>
+                    <Label Text="&#x1F514;"
+                           FontSize="26"
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,AutoSize,AutoSize"
+                           AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
-                    <Label
-                        Grid.Row="1"
-                        Text="Computer Engineering"
-                        FontSize="16"
-                        TextColor="Gray"
-                        HorizontalOptions="Center"/>
+                    <BoxView Color="#FF5252"
+                             CornerRadius="5"
+                             WidthRequest="10"
+                             HeightRequest="10"
+                             AbsoluteLayout.LayoutBounds="0.88,0.12,10,10"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                </AbsoluteLayout>
+
+            </StackLayout>
+
+            <!-- PROFILE CARD: FRAME + GRID -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="16"
+                   Padding="15"
+                   HasShadow="True">
+
+                <Grid ColumnDefinitions="85,*"
+                      ColumnSpacing="15">
+
+                    <Image Source="dotnet_bot.png"
+                           WidthRequest="75"
+                           HeightRequest="75"
+                           Aspect="AspectFill"
+                           VerticalOptions="Center"/>
+
+                    <StackLayout Grid.Column="1"
+                                 VerticalOptions="Center"
+                                 Spacing="6">
+
+                        <Label Text="Afreen Kazi"
+                               FontSize="21"
+                               FontAttributes="Bold"
+                               TextColor="#202B45"/>
+
+                        <Label Text="Computer Engineering Student"
+                               FontSize="13"
+                               TextColor="Gray"/>
+
+                        <Label Text="AI/ML Developer"
+                               FontSize="13"
+                               TextColor="#5267C5"
+                               FontAttributes="Bold"/>
+
+                    </StackLayout>
+
                 </Grid>
-
             </Frame>
 
-            <!-- Buttons -->
-            <StackLayout
-                Orientation="Horizontal"
-                Spacing="12"
-                HorizontalOptions="Center">
+            <!-- STATISTICS -->
+            <Label Text="Your Statistics"
+                   FontSize="19"
+                   FontAttributes="Bold"
+                   TextColor="#202B45"/>
 
-                <Button
-                    x:Name="LikeButton"
-                    Text="Like (0)"
-                    Clicked="OnLikeClicked"
-                    BackgroundColor="#2563EB"
-                    TextColor="White"/>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Fill"
+                         Spacing="5">
 
-                <Button
-                    Text="Message"
-                    Clicked="OnMessageClicked"
-                    BackgroundColor="#16A34A"
-                    TextColor="White"/>
+                <!-- POSTS -->
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             Spacing="5">
+
+                    <Label Text="24"
+                           FontSize="23"
+                           FontAttributes="Bold"
+                           TextColor="#5267C5"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Posts"
+                           FontSize="13"
+                           TextColor="Gray"
+                           HorizontalTextAlignment="Center"/>
+
+                </StackLayout>
+
+                <!-- FOLLOWERS -->
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             Spacing="5">
+
+                    <Label Text="1.2K"
+                           FontSize="23"
+                           FontAttributes="Bold"
+                           TextColor="#5267C5"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Followers"
+                           FontSize="13"
+                           TextColor="Gray"
+                           HorizontalTextAlignment="Center"/>
+
+                </StackLayout>
+
+                <!-- FOLLOWING -->
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             Spacing="5">
+
+                    <Label Text="350"
+                           FontSize="23"
+                           FontAttributes="Bold"
+                           TextColor="#5267C5"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Following"
+                           FontSize="13"
+                           TextColor="Gray"
+                           HorizontalTextAlignment="Center"/>
+
+                </StackLayout>
 
             </StackLayout>
 
-            <!-- Comment Entry -->
-            <Entry
-                x:Name="CommentEntry"
-                Placeholder="Add a comment"
-                TextColor="Black"
-                BackgroundColor="White"/>
+            <!-- FLEX LAYOUT: WRAPPING TAGS -->
+            <Label Text="Interests &amp; Skills"
+                   FontSize="19"
+                   FontAttributes="Bold"
+                   TextColor="#202B45"/>
 
-            <Button
-                Text="Post Comment"
-                Clicked="OnPostCommentClicked"/>
+            <FlexLayout Direction="Row"
+                        Wrap="Wrap"
+                        JustifyContent="Start"
+                        AlignItems="Start">
 
-            <!-- Switch -->
-            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Frame BackgroundColor="#E4E9FF"
+                       CornerRadius="15"
+                       Padding="12,6"
+                       Margin="3"
+                       HasShadow="False">
+                    <Label Text="Artificial Intelligence"
+                           TextColor="#4055A5"
+                           FontSize="13"/>
+                </Frame>
 
-                <Label
-                    Text="Available for collaboration"
-                    TextColor="Gray"
-                    VerticalOptions="Center"/>
+                <Frame BackgroundColor="#E4E9FF"
+                       CornerRadius="15"
+                       Padding="12,6"
+                       Margin="3"
+                       HasShadow="False">
+                    <Label Text="Machine Learning"
+                           TextColor="#4055A5"
+                           FontSize="13"/>
+                </Frame>
 
-                <Switch
-                    x:Name="AvailabilitySwitch"
-                    IsToggled="True"
-                    Toggled="OnAvailabilityToggled"/>
+                <Frame BackgroundColor="#E4E9FF"
+                       CornerRadius="15"
+                       Padding="12,6"
+                       Margin="3"
+                       HasShadow="False">
+                    <Label Text="Mobile Development"
+                           TextColor="#4055A5"
+                           FontSize="13"/>
+                </Frame>
 
-            </StackLayout>
+                <Frame BackgroundColor="#E4E9FF"
+                       CornerRadius="15"
+                       Padding="12,6"
+                       Margin="3"
+                       HasShadow="False">
+                    <Label Text="Cybersecurity"
+                           TextColor="#4055A5"
+                           FontSize="13"/>
+                </Frame>
 
-            <Label
-                x:Name="AvailabilityLabel"
-                Text="Status: Available"
-                TextColor="Green"/>
+                <Frame BackgroundColor="#E4E9FF"
+                       CornerRadius="15"
+                       Padding="12,6"
+                       Margin="3"
+                       HasShadow="False">
+                    <Label Text="Robotics"
+                           TextColor="#4055A5"
+                           FontSize="13"/>
+                </Frame>
 
-            <!-- Skills Collection -->
-            <Label
-                Text="My Skills"
-                FontSize="20"
-                TextColor="Black"
-                FontAttributes="Bold"/>
+                <Frame BackgroundColor="#E4E9FF"
+                       CornerRadius="15"
+                       Padding="12,6"
+                       Margin="3"
+                       HasShadow="False">
+                    <Label Text="UI Design"
+                           TextColor="#4055A5"
+                           FontSize="13"/>
+                </Frame>
 
-            <CollectionView
-                x:Name="SkillsCollection"
-                HeightRequest="75"
-                ItemsLayout="HorizontalList"
-                SelectionMode="None">
+            </FlexLayout>
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
+            <!-- RECENT ACTIVITY -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="15"
+                   Padding="15"
+                   HasShadow="True">
 
-                        <Frame
-                            BackgroundColor="#DBEAFE"
-                            CornerRadius="10"
-                            Padding="12"
-                            Margin="4"
-                            HasShadow="False">
+                <StackLayout Spacing="8">
 
-                            <Label
-                                Text="{Binding .}"
-                                TextColor="#1E40AF"
-                                FontAttributes="Bold"
-                                VerticalOptions="Center"/>
+                    <Label Text="Recent Activity"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#202B45"/>
 
-                        </Frame>
+                    <Label Text="• Completed a mobile development task"
+                           FontSize="13"
+                           TextColor="Gray"/>
 
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                    <Label Text="• Updated project portfolio"
+                           FontSize="13"
+                           TextColor="Gray"/>
 
-            </CollectionView>
+                    <Label Text="• Explored new AI technologies"
+                           FontSize="13"
+                           TextColor="Gray"/>
+
+                </StackLayout>
+            </Frame>
+
+            <!-- ACTION BUTTON -->
+            <Button Text="View Full Profile"
+                    BackgroundColor="#5267C5"
+                    TextColor="White"
+                    CornerRadius="12"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    HorizontalOptions="Fill"
+                    Clicked="OnProfileButtonClicked"/>
 
         </StackLayout>
     </ScrollView>
